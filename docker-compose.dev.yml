@@ -1,0 +1,28 @@
+version: '3.9'
+
+# Development override — hot reload, no builds
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      MONGODB_URI: mongodb://mongo:27017/foundations
+      PORT: 4000
+      FRONTEND_URL: http://localhost:3000
+    command: ["npx", "nodemon", "server.js"]
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_API_URL: http://localhost:4000
+    command: ["npm", "run", "dev"]
