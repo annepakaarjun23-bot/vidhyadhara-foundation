@@ -218,7 +218,7 @@ export default function AboutPage() {
             <SectionLabel>Committee</SectionLabel>
             <SectionTitle>Committee Members</SectionTitle>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '20px', marginTop: '32px' }}>
-              <PersonCard name="G.Santhosh" role="Osmania University" photo="/team/santu.jpeg"/>
+              <PersonCard name="G.Santhosh" role="Nizam College constituent college of Osmania University" photo="/team/santu.jpeg"/>
               <PersonCard name="B.Anil Kumar" role="P.V NARSIMHA RAO VETERINARY UNIVERSITY" photo="/team/sima.jpeg" />
               <PersonCard name="G.Thanuja" role="Bharat institute of engineering and technology" photo="/team/thanuja.jpeg" />
               <PersonCard name="B.Maheshwari" role="Nizam institute of medical science" photo="/team/maheshwari.jpeg" />
@@ -257,7 +257,7 @@ export default function AboutPage() {
                 { 
                   name: 'B.Ajay', 
                   photo: "/team/ajay.jpeg", 
-                  role: "Student" 
+                  role: "UNIVERSITY POST-GRADUATE COLLEGE OSMAN UNIVERSITY, SECUNDERABAD" 
                 },
                 { 
                   name: 'G.Devendar', 
@@ -281,11 +281,11 @@ export default function AboutPage() {
                 },
                 { 
                   name: 'B.Samuel', 
-                  photo: "/team/samuel.jpeg", 
+                  photo: null, 
                   role: "TSWREIS Chandur " 
                 },
                 { 
-                  name: 'G2Mahesh', 
+                  name: 'G.Mahesh', 
                   photo: '/team/mahesh.jpeg', 
                   role: "Tswreis boys anumula" 
                 },

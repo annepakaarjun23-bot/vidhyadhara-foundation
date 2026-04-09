@@ -68,7 +68,7 @@ app.use(cors({
 // Rate limiting — global
 const globalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100,
+  max: 500,
   standardHeaders: true,
   legacyHeaders: false,
   message: { success: false, message: 'Too many requests. Please try again later.' },
@@ -77,7 +77,7 @@ const globalLimiter = rateLimit({
 // Stricter limit for registration endpoints
 const registrationLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 10,
+  max: 50,
   standardHeaders: true,
   legacyHeaders: false,
   message: { success: false, message: 'Too many submissions from this IP. Please try again later.' },
