@@ -58,19 +58,40 @@ const media = [
 
 function VideoPlayer({ src, poster }) {
   const videoRef = useRef(null)
+  const containerRef = useRef(null)
 
   useEffect(() => {
     const video = videoRef.current
-    if (!video) return
+    const container = containerRef.current
+    if (!video || !container) return
 
-    // Attempt autoplay with audio (unmuted)
-    const playPromise = video.play()
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // If browser blocks unmuted autoplay, fallback to muted autoplay
-        video.muted = true
-        video.play()
-      })
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Scroll into view: try to play with audio
+            video.muted = false
+            const playPromise = video.play()
+            if (playPromise !== undefined) {
+              playPromise.catch(() => {
+                // Browser blocked unmuted autoplay → fallback muted
+                video.muted = true
+                video.play()
+              })
+            }
+          } else {
+            // Scroll out of view: pause
+            video.pause()
+          }
+        })
+      },
+      { threshold: 0.5 } // Play when 50% of the video is visible
+    )
+
+    observer.observe(container)
+
+    return () => {
+      observer.disconnect()
     }
   }, [])
 
@@ -79,19 +100,23 @@ function VideoPlayer({ src, poster }) {
     const video = videoRef.current
     if (!video) return
     if (video.paused) {
-      video.play()
+      // User clicked to play → allow audio
+      video.muted = false
+      video.play().catch(() => {
+        video.muted = true
+        video.play()
+      })
     } else {
       video.pause()
     }
   }
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+    <div ref={containerRef} style={{ position: 'relative', width: '100%', height: '100%' }}>
       <video
         ref={videoRef}
         src={src}
         poster={poster}
-        autoPlay
         playsInline
         loop
         preload="metadata"
