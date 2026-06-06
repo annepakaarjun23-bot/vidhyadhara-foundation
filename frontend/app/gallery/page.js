@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { SectionLabel, SectionTitle } from '../../components/ui'
@@ -16,39 +16,35 @@ import { SectionLabel, SectionTitle } from '../../components/ui'
   }
 */
 
-const media = [
-  // ── Existing images ──
-  { type: 'image', src: '/gallery/image9.jpeg', caption: 'Alumni Meet 2025', aspect: '4/3' },
-  { type: 'image', src: '/gallery/image4.jpeg', caption: 'Program Ceremony', aspect: '4/3' },
-  { type: 'image', src: '/gallery/image23.jpeg', caption: 'Foundation Events', aspect: '4/3' },
-  { type: 'image', src: '/gallery/image14.jpeg', caption: 'Foundation Group Photo', aspect: '4/3' },
-  { type: 'image', src: '/gallery/image8.jpeg', caption: 'Connecting People', aspect: '4/3' },
-  { type: 'image', src: '/gallery/image6.jpeg', caption: 'Summer Camp 2025', aspect: '4/3' },
-  { type: 'image', src: '/gallery/image7.jpeg', caption: 'Morning Mindfulness Session', aspect: '4/3' },
-  { type: 'image', src: '/gallery/image3.jpeg', caption: 'Evening Study Hour', aspect: '4/3' },
-  { type: 'image', src: '/gallery/image5.jpeg', caption: 'Summer Camp Night Study', aspect: '4/3' },
-  { type: 'image', src: '/gallery/image17.jpeg', caption: 'Summer Camp 2024', aspect: '4/3' },
-  { type: 'image', src: '/gallery/image24.jpeg', caption: 'Last day at the Camp', aspect: '4/3' },
-  { type: 'image', src: '/gallery/image22.jpeg', caption: 'Foundation Events', aspect: '4/3' },
+const images = [
+  { src: '/gallery/image9.jpeg', caption: 'Alumni Meet 2025', aspect: '4/3' },
+  { src: '/gallery/image4.jpeg', caption: 'Program Ceremony', aspect: '4/3' },
+  { src: '/gallery/image23.jpeg', caption: 'Foundation Events', aspect: '4/3' },
+  { src: '/gallery/image14.jpeg', caption: 'Foundation Group Photo', aspect: '4/3' },
+  { src: '/gallery/image8.jpeg', caption: 'Connecting People', aspect: '4/3' },
+  { src: '/gallery/image6.jpeg', caption: 'Summer Camp 2025', aspect: '4/3' },
+  { src: '/gallery/image7.jpeg', caption: 'Morning Mindfulness Session', aspect: '4/3' },
+  { src: '/gallery/image3.jpeg', caption: 'Evening Study Hour', aspect: '4/3' },
+  { src: '/gallery/image5.jpeg', caption: 'Summer Camp Night Study', aspect: '4/3' },
+  { src: '/gallery/image17.jpeg', caption: 'Summer Camp 2024', aspect: '4/3' },
+  { src: '/gallery/image24.jpeg', caption: 'Last day at the Camp', aspect: '4/3' },
+  { src: '/gallery/image22.jpeg', caption: 'Foundation Events', aspect: '4/3' },
+  { src: '/gallery/image26.jpeg', caption: 'A meaningful beginning as children and parents gather to learn', aspect: '1/1' },
+  { src: '/gallery/image27.jpeg', caption: 'Building connections and creating memories with our valued guests.', aspect: '1/1' },
+  { src: '/gallery/image25.jpeg', caption: 'A day of learning and inspiration at Osmania University.', aspect: '1/1' },
+  { src: '/gallery/image28.jpeg', caption: 'Welcoming guests who support and motivate our children dreams and aspirations.', aspect: '1/1' },
+  { src: '/gallery/image29.jpeg', caption: 'A memorable milestone during our Summer Camp educational tour.', aspect: '1/1' },
+  { src: '/gallery/image30.jpeg', caption: 'Empowering young learners with resources, motivation, and care.', aspect: '1/1' },
+]
 
-  // ── Summer Camp 2026 images ──
-  { type: 'image', src: '/gallery/image26.jpeg', caption: 'A meaningful beginning as children and parents gather to learn', aspect: '1/1' },
-  { type: 'image', src: '/gallery/image27.jpeg', caption: 'Building connections and creating memories with our valued guests.', aspect: '1/1' },
-  { type: 'image', src: '/gallery/image25.jpeg', caption: 'A day of learning and inspiration at Osmania University.', aspect: '1/1' },
-  { type: 'image', src: '/gallery/image28.jpeg', caption: 'Welcoming guests who support and motivate our children dreams and aspirations.', aspect: '1/1' },
-  { type: 'image', src: '/gallery/image29.jpeg', caption: 'A memorable milestone during our Summer Camp educational tour.', aspect: '1/1' },
-  { type: 'image', src: '/gallery/image30.jpeg', caption: 'Empowering young learners with resources, motivation, and care.', aspect: '1/1' },
-
-  // ── Videos ──
+const videos = [
   {
-    type: 'video',
     src: '/videos/video1.mp4',
     caption: 'Guiding young minds through an inspiring educational journey at Osmania University.',
     aspect: '16/9',
     poster: '/gallery/image25.jpeg',
   },
   {
-    type: 'video',
     src: '/videos/video2.mp4',
     caption: 'A glimpse into the joy, growth, and memories created during Summer Camp.',
     aspect: '16/9',
@@ -58,68 +54,55 @@ const media = [
 
 function VideoPlayer({ src, poster }) {
   const videoRef = useRef(null)
-  const containerRef = useRef(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [isEnded, setIsEnded] = useState(false)
 
-  useEffect(() => {
-    const video = videoRef.current
-    const container = containerRef.current
-    if (!video || !container) return
+  const handlePlay = () => {
+    setIsPlaying(true)
+    setIsEnded(false)
+  }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Scroll into view: try to play with audio
-            video.muted = false
-            const playPromise = video.play()
-            if (playPromise !== undefined) {
-              playPromise.catch(() => {
-                // Browser blocked unmuted autoplay → fallback muted
-                video.muted = true
-                video.play()
-              })
-            }
-          } else {
-            // Scroll out of view: pause
-            video.pause()
-          }
-        })
-      },
-      { threshold: 0.5 } // Play when 50% of the video is visible
-    )
+  const handlePause = () => {
+    setIsPlaying(false)
+  }
 
-    observer.observe(container)
+  const handleEnded = () => {
+    setIsPlaying(false)
+    setIsEnded(true)
+  }
 
-    return () => {
-      observer.disconnect()
-    }
-  }, [])
-
-  const togglePlay = (e) => {
-    e.stopPropagation()
+  const togglePlay = () => {
     const video = videoRef.current
     if (!video) return
-    if (video.paused) {
-      // User clicked to play → allow audio
-      video.muted = false
-      video.play().catch(() => {
-        video.muted = true
-        video.play()
-      })
+
+    if (isEnded) {
+      video.currentTime = 0
+      video.play().then(() => {
+        setIsPlaying(true)
+        setIsEnded(false)
+      }).catch(() => {})
+    } else if (video.paused) {
+      video.play().then(() => {
+        setIsPlaying(true)
+        setIsEnded(false)
+      }).catch(() => {})
     } else {
       video.pause()
+      setIsPlaying(false)
     }
   }
 
   return (
-    <div ref={containerRef} style={{ position: 'relative', width: '100%', height: '100%' }}>
+    <div style={{ position: 'relative', width: '100%', height: '100%', background: '#0d1b2a' }}>
       <video
         ref={videoRef}
         src={src}
         poster={poster}
         playsInline
-        loop
         preload="metadata"
+        onPlay={handlePlay}
+        onPause={handlePause}
+        onEnded={handleEnded}
         style={{
           width: '100%',
           height: '100%',
@@ -127,7 +110,7 @@ function VideoPlayer({ src, poster }) {
           display: 'block',
         }}
       />
-      {/* Invisible overlay — click anywhere on the video to play/pause */}
+      {/* Full-area click overlay */}
       <div
         onClick={togglePlay}
         style={{
@@ -138,9 +121,69 @@ function VideoPlayer({ src, poster }) {
           height: '100%',
           cursor: 'pointer',
           zIndex: 2,
-          background: 'transparent',
         }}
       />
+      {/* Centered button — hidden while playing */}
+      <div
+        onClick={(e) => {
+          e.stopPropagation()
+          togglePlay()
+        }}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 3,
+          width: '72px',
+          height: '72px',
+          borderRadius: '50%',
+          background: 'rgba(13,42,78,0.85)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.35)',
+          opacity: isPlaying ? 0 : 1,
+          pointerEvents: isPlaying ? 'none' : 'auto',
+          transition: 'opacity 0.25s ease',
+        }}
+      >
+        {isEnded ? (
+          /* Replay icon */
+          <div style={{
+            width: '26px',
+            height: '26px',
+            border: '3px solid #ffffff',
+            borderRadius: '50%',
+            borderTopColor: 'transparent',
+            position: 'relative',
+            transform: 'rotate(-45deg)',
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '-2px',
+              right: '-1px',
+              width: 0,
+              height: 0,
+              borderLeft: '7px solid #ffffff',
+              borderTop: '5px solid transparent',
+              borderBottom: '5px solid transparent',
+              transform: 'rotate(75deg)',
+            }} />
+          </div>
+        ) : (
+          /* Play icon */
+          <div style={{
+            width: 0,
+            height: 0,
+            borderTop: '12px solid transparent',
+            borderBottom: '12px solid transparent',
+            borderLeft: '20px solid #ffffff',
+            marginLeft: '4px',
+          }} />
+        )}
+      </div>
     </div>
   )
 }
@@ -164,37 +207,34 @@ export default function GalleryPage() {
           </div>
         </div>
 
-        {/* Gallery Grid */}
+        {/* ── Photos Section ── */}
         <section style={{ background: '#f0f5fc', padding: '64px 0', borderBottom: '1px solid #dce6f0' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
+            <SectionLabel>Photos</SectionLabel>
+            <SectionTitle>Captured Moments</SectionTitle>
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
               gap: '16px',
+              marginTop: '32px',
             }}>
-              {media.map((item, i) => (
+              {images.map((img, i) => (
                 <div key={i} style={{
                   background: '#ffffff',
                   border: '1px solid #dce6f0',
                   borderRadius: '4px',
                   overflow: 'hidden',
-                  position: 'relative',
                 }}>
                   <div style={{
-                    aspectRatio: item.aspect || '4/3',
+                    aspectRatio: img.aspect || '4/3',
                     overflow: 'hidden',
                     background: '#e8eef6',
-                    position: 'relative',
                   }}>
-                    {item.type === 'video' ? (
-                      <VideoPlayer src={item.src} poster={item.poster} />
-                    ) : (
-                      <img
-                        src={item.src}
-                        alt={item.caption}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                      />
-                    )}
+                    <img
+                      src={img.src}
+                      alt={img.caption}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
                   </div>
                   <div style={{
                     padding: '12px 16px',
@@ -207,7 +247,53 @@ export default function GalleryPage() {
                       fontWeight: 600,
                       fontFamily: 'Inter, sans-serif',
                     }}>
-                      {item.caption}
+                      {img.caption}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Videos Section ── */}
+        <section style={{ background: '#ffffff', padding: '64px 0', borderBottom: '1px solid #dce6f0' }}>
+          <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
+            <SectionLabel>Media</SectionLabel>
+            <SectionTitle>Videos</SectionTitle>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
+              gap: '24px',
+              marginTop: '32px',
+            }}>
+              {videos.map((video, i) => (
+                <div key={i} style={{
+                  background: '#ffffff',
+                  border: '1px solid #dce6f0',
+                  borderRadius: '4px',
+                  overflow: 'hidden',
+                }}>
+                  <div style={{
+                    aspectRatio: video.aspect || '16/9',
+                    overflow: 'hidden',
+                    background: '#e8eef6',
+                  }}>
+                    <VideoPlayer src={video.src} poster={video.poster} />
+                  </div>
+                  <div style={{
+                    padding: '14px 18px',
+                    borderTop: '1px solid #dce6f0',
+                    background: '#ffffff',
+                  }}>
+                    <p style={{
+                      fontSize: '0.88rem',
+                      color: '#4a5568',
+                      fontWeight: 600,
+                      fontFamily: 'Inter, sans-serif',
+                      lineHeight: 1.5,
+                    }}>
+                      {video.caption}
                     </p>
                   </div>
                 </div>
