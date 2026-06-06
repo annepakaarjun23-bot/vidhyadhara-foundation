@@ -157,42 +157,198 @@ export default function ProgramsPage() {
               />
             </div>
 
-            {/* 2026 coming soon */}
-            <div style={{
-              background: '#f0f5fc',
-              border: '1px dashed #b0c8e8',
-              borderRadius: '4px',
-              padding: '32px',
-              textAlign: 'center',
+            {/* 2026 Summer Camp — Completed */}
+            <h3 style={{ 
+              fontSize: '0.85rem', 
+              fontWeight: 700, 
+              color: '#1a4d8f', 
+              textTransform: 'uppercase', 
+              letterSpacing: '0.08em', 
+              borderBottom: '1px solid #dce6f0', 
+              paddingBottom: '8px', 
+              marginBottom: '20px', 
+              fontFamily: 'Inter, sans-serif' 
             }}>
-              <div style={{ 
-                fontSize: '0.8rem', 
-                fontWeight: 700, 
-                color: '#1a4d8f', 
-                textTransform: 'uppercase', 
-                letterSpacing: '0.08em', 
-                marginBottom: '8px', 
-                fontFamily: 'Inter, sans-serif' 
-              }}>
-                2026
+              2026
+            </h3>
+            <div style={{
+              background: '#ffffff',
+              border: '1px solid #dce6f0',
+              borderTop: '3px solid #1a4d8f',
+              borderRadius: '4px',
+              overflow: 'hidden',
+              marginBottom: '24px',
+            }}>
+              {/* Image Gallery */}
+              <div style={{ padding: '24px' }}>
+                {/* 2 Wide Rectangle Images */}
+                <div style={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+                  gap: '16px', 
+                  marginBottom: '16px' 
+                }}>
+                  <div style={{ aspectRatio: '16/9', overflow: 'hidden', background: '#e8eef6', borderRadius: '4px' }}>
+                    <img 
+                      src="/gallery/image25.jpeg" 
+                      alt="Summer Camp 2026 - Group Session" 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  </div>
+                  <div style={{ aspectRatio: '16/9', overflow: 'hidden', background: '#e8eef6', borderRadius: '4px' }}>
+                    <img 
+                      src="/gallery/image29.jpeg" 
+                      alt="Summer Camp 2026 - Guest Interaction" 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  </div>
+                </div>
+
+                {/* 4 Square Images */}
+                <div style={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', 
+                  gap: '16px', 
+                  marginBottom: '8px' 
+                }}>
+                  {[
+                    '/gallery/image26.jpeg',
+                    '/gallery/image27.jpeg',
+                    '/gallery/image28.jpeg',
+                    '/gallery/image30.jpeg',
+                  ].map((src, idx) => (
+                    <div key={idx} style={{ aspectRatio: '1/1', overflow: 'hidden', background: '#e8eef6', borderRadius: '4px' }}>
+                      <img 
+                        src={src} 
+                        alt={`Summer Camp 2026 Moment ${idx + 1}`} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-              <h3 style={{ 
-                fontSize: '1rem', 
-                fontWeight: 700, 
-                color: '#0d2a4e', 
-                marginBottom: '8px', 
-                fontFamily: 'Inter, sans-serif' 
+
+              {/* Text Content */}
+              <div style={{ padding: '0 24px 28px' }}>
+                <div style={{ 
+                  fontSize: '0.7rem', 
+                  fontWeight: 700, 
+                  color: '#1a4d8f', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.08em', 
+                  marginBottom: '6px', 
+                  fontFamily: 'Inter, sans-serif' 
+                }}>
+                  2026
+                </div>
+                <h3 style={{ 
+                  fontSize: '1.05rem', 
+                  fontWeight: 700, 
+                  color: '#0d2a4e', 
+                  marginBottom: '16px', 
+                  fontFamily: 'Inter, sans-serif', 
+                  lineHeight: 1.3 
+                }}>
+                  Vidhyadhara Foundation Summer Camp 2026
+                </h3>
+                <div style={{ fontSize: '0.9rem', color: '#4a5568', lineHeight: 1.8, fontFamily: 'Inter, sans-serif' }}>
+                  <p style={{ marginBottom: '14px' }}>
+                    <strong style={{ color: '#0d2a4e' }}>The Vidhyadhara Foundation successfully organized a Summer Camp from 28th April 2026 to 31st May 2026</strong> with the aim of enhancing students' academic knowledge, personality development, and social awareness.
+                  </p>
+                  <p style={{ marginBottom: '14px' }}>
+                    During the camp, students were taught important subjects such as Mathematics, English, and Physics. The classes helped students strengthen their fundamentals and improve their learning skills.
+                  </p>
+                  <p style={{ marginBottom: '14px' }}>
+                    To inspire and motivate the students, several interaction sessions were conducted by distinguished guests. <strong style={{ color: '#0d2a4e' }}>Shri K. Ravindar Reddy, Municipal Commissioner of Haliya</strong>, interacted with the students and shared valuable guidance on education, discipline, and public service. <strong style={{ color: '#0d2a4e' }}>Shri Ramulu, MEO of Peddavoora</strong>, also addressed the students and encouraged them to work hard toward achieving their goals.
+                  </p>
+                  <p style={{ marginBottom: '14px' }}>
+                    Every Saturday, the Foundation organized a <strong style={{ color: '#0d2a4e' }}>"Book Readathan" Session</strong> to develop reading habits among students. In addition, students learned about the Indian Constitution, covering Articles 1 to 11, which helped them understand the basic structure and values of the nation.
+                  </p>
+                  <p style={{ marginBottom: '14px' }}>
+                    One of the most memorable events of the camp was the educational visit to <strong style={{ color: '#0d2a4e' }}>Osmania University on 23rd May 2026</strong>. It was a wonderful learning experience for all participants. The students had the opportunity to meet <strong style={{ color: '#0d2a4e' }}>Prof. Kaseem Sir, Principal of Arts College, Osmania University</strong>, and <strong style={{ color: '#0d2a4e' }}>Prof. K. Shyamala Madam, Head of the Department of Computer Science and Engineering, University College of Engineering (A), Osmania University</strong>. Their interaction motivated the students to pursue higher education and aim for excellence in their careers.
+                  </p>
+                  <p style={{ marginBottom: '0px' }}>
+                    The Summer Camp concluded successfully on 31st May 2026. Students, parents, volunteers, and Foundation members expressed their happiness and appreciation for the camp. The program not only improved academic skills but also enhanced students' confidence, knowledge, and awareness, making it a memorable and meaningful experience for everyone involved.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 2026 — Upcoming Camps */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '40px' }}>
+              <div style={{
+                background: '#f0f5fc',
+                border: '1px dashed #b0c8e8',
+                borderRadius: '4px',
+                padding: '32px',
+                textAlign: 'center',
               }}>
-                Summer Camp 2026 — Coming Soon
-              </h3>
-              <p style={{ 
-                fontSize: '0.85rem', 
-                color: '#4a5568', 
-                marginBottom: '20px' 
+                <div style={{ 
+                  fontSize: '0.8rem', 
+                  fontWeight: 700, 
+                  color: '#1a4d8f', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.08em', 
+                  marginBottom: '8px', 
+                  fontFamily: 'Inter, sans-serif' 
+                }}>
+                  2026
+                </div>
+                <h3 style={{ 
+                  fontSize: '1rem', 
+                  fontWeight: 700, 
+                  color: '#0d2a4e', 
+                  marginBottom: '8px', 
+                  fontFamily: 'Inter, sans-serif' 
+                }}>
+                  Dasara Camp 2026 — Coming Soon
+                </h3>
+                <p style={{ 
+                  fontSize: '0.85rem', 
+                  color: '#4a5568', 
+                  marginBottom: '20px' 
+                }}>
+                  Holiday revision camp during Dasara holidays. Focused sessions for board classes with doubt-clearing workshops. Registration will open shortly.
+                </p>
+                <Btn href="/student_register" variant="solid">Register Interest</Btn>
+              </div>
+
+              <div style={{
+                background: '#f0f5fc',
+                border: '1px dashed #b0c8e8',
+                borderRadius: '4px',
+                padding: '32px',
+                textAlign: 'center',
               }}>
-                Summer Camp 2026 registration is now open. Be among the first to register.
-              </p>
-              <Btn href="/student_register" variant="solid">Register Now — Free</Btn>
+                <div style={{ 
+                  fontSize: '0.8rem', 
+                  fontWeight: 700, 
+                  color: '#1a4d8f', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.08em', 
+                  marginBottom: '8px', 
+                  fontFamily: 'Inter, sans-serif' 
+                }}>
+                  2026
+                </div>
+                <h3 style={{ 
+                  fontSize: '1rem', 
+                  fontWeight: 700, 
+                  color: '#0d2a4e', 
+                  marginBottom: '8px', 
+                  fontFamily: 'Inter, sans-serif' 
+                }}>
+                  Winter Camp 2026 — Coming Soon
+                </h3>
+                <p style={{ 
+                  fontSize: '0.85rem', 
+                  color: '#4a5568', 
+                  marginBottom: '20px' 
+                }}>
+                  Exam preparation camp in December–January. Model papers, answer-writing workshops, and personalised feedback for secondary and higher secondary students.
+                </p>
+                <Btn href="/student_register" variant="solid">Register Interest</Btn>
+              </div>
             </div>
           </div>
         </section>

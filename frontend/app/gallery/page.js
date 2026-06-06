@@ -1,26 +1,124 @@
+"use client"
+
+import { useRef, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { SectionLabel, SectionTitle } from '../../components/ui'
 
-export const metadata = {
-  title: 'Gallery — Vidhyadhara Foundation',
-  description: 'Photos from our camps, programs, and community events at Vidhyadhara Foundation.',
-}
+/*
+  NOTE: Move this metadata block to your app/gallery/layout.js file
+  since "use client" pages cannot export metadata.
 
-const images = [
-  { src: '/gallery/image9.jpeg', caption: 'Alumni Meet 2025' },
-  { src: '/gallery/image4.jpeg', caption: 'Program Ceremony'},
-  { src: '/gallery/image23.jpeg', caption: 'Foundation Events' },
-  { src: '/gallery/image14.jpeg', caption: 'Foundation Group Photo' },
-  { src: '/gallery/image8.jpeg', caption: 'Connecting People' },
-  { src: '/gallery/image6.jpeg', caption: 'Summer Camp 2025'  },
-  { src: '/gallery/image7.jpeg', caption: 'Morning Mindfulness Session' },
-  { src: '/gallery/image3.jpeg', caption: 'Evening Study Hour' },
-  { src: '/gallery/image5.jpeg', caption: 'Summer Camp Night Study' },
-  { src: '/gallery/image17.jpeg', caption: 'Summer Camp 2024' },
-  { src: '/gallery/image24.jpeg', caption: 'Last day at the Camp' },
-  { src: '/gallery/image22.jpeg', caption: 'Foundation Events' },
+  // app/gallery/layout.js
+  export const metadata = {
+    title: 'Gallery — Vidhyadhara Foundation',
+    description: 'Photos and videos from our camps, programs, and community events at Vidhyadhara Foundation.',
+  }
+*/
+
+const media = [
+  // ── Existing images ──
+  { type: 'image', src: '/gallery/image9.jpeg', caption: 'Alumni Meet 2025', aspect: '4/3' },
+  { type: 'image', src: '/gallery/image4.jpeg', caption: 'Program Ceremony', aspect: '4/3' },
+  { type: 'image', src: '/gallery/image23.jpeg', caption: 'Foundation Events', aspect: '4/3' },
+  { type: 'image', src: '/gallery/image14.jpeg', caption: 'Foundation Group Photo', aspect: '4/3' },
+  { type: 'image', src: '/gallery/image8.jpeg', caption: 'Connecting People', aspect: '4/3' },
+  { type: 'image', src: '/gallery/image6.jpeg', caption: 'Summer Camp 2025', aspect: '4/3' },
+  { type: 'image', src: '/gallery/image7.jpeg', caption: 'Morning Mindfulness Session', aspect: '4/3' },
+  { type: 'image', src: '/gallery/image3.jpeg', caption: 'Evening Study Hour', aspect: '4/3' },
+  { type: 'image', src: '/gallery/image5.jpeg', caption: 'Summer Camp Night Study', aspect: '4/3' },
+  { type: 'image', src: '/gallery/image17.jpeg', caption: 'Summer Camp 2024', aspect: '4/3' },
+  { type: 'image', src: '/gallery/image24.jpeg', caption: 'Last day at the Camp', aspect: '4/3' },
+  { type: 'image', src: '/gallery/image22.jpeg', caption: 'Foundation Events', aspect: '4/3' },
+
+  // ── Summer Camp 2026 images ──
+  { type: 'image', src: '/gallery/image26.jpeg', caption: 'A meaningful beginning as children and parents gather to learn', aspect: '1/1' },
+  { type: 'image', src: '/gallery/image27.jpeg', caption: 'Building connections and creating memories with our valued guests.', aspect: '1/1' },
+  { type: 'image', src: '/gallery/image25.jpeg', caption: 'A day of learning and inspiration at Osmania University.', aspect: '1/1' },
+  { type: 'image', src: '/gallery/image28.jpeg', caption: 'Welcoming guests who support and motivate our children dreams and aspirations.', aspect: '1/1' },
+  { type: 'image', src: '/gallery/image29.jpeg', caption: 'A memorable milestone during our Summer Camp educational tour.', aspect: '1/1' },
+  { type: 'image', src: '/gallery/image30.jpeg', caption: 'Empowering young learners with resources, motivation, and care.', aspect: '1/1' },
+
+  // ── Videos ──
+  {
+    type: 'video',
+    src: '/videos/video1.mp4',
+    caption: 'Guiding young minds through an inspiring educational journey at Osmania University.',
+    aspect: '16/9',
+    poster: '/gallery/image25.jpeg',
+  },
+  {
+    type: 'video',
+    src: '/videos/video2.mp4',
+    caption: 'A glimpse into the joy, growth, and memories created during Summer Camp.',
+    aspect: '16/9',
+    poster: '/gallery/image25.jpeg',
+  },
 ]
+
+function VideoPlayer({ src, poster }) {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    // Attempt autoplay with audio (unmuted)
+    const playPromise = video.play()
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // If browser blocks unmuted autoplay, fallback to muted autoplay
+        video.muted = true
+        video.play()
+      })
+    }
+  }, [])
+
+  const togglePlay = (e) => {
+    e.stopPropagation()
+    const video = videoRef.current
+    if (!video) return
+    if (video.paused) {
+      video.play()
+    } else {
+      video.pause()
+    }
+  }
+
+  return (
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        autoPlay
+        playsInline
+        loop
+        preload="metadata"
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          display: 'block',
+        }}
+      />
+      {/* Invisible overlay — click anywhere on the video to play/pause */}
+      <div
+        onClick={togglePlay}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          cursor: 'pointer',
+          zIndex: 2,
+          background: 'transparent',
+        }}
+      />
+    </div>
+  )
+}
 
 export default function GalleryPage() {
   return (
@@ -49,27 +147,42 @@ export default function GalleryPage() {
               gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
               gap: '16px',
             }}>
-              {images.map((img, i) => (
+              {media.map((item, i) => (
                 <div key={i} style={{
                   background: '#ffffff',
                   border: '1px solid #dce6f0',
                   borderRadius: '4px',
                   overflow: 'hidden',
+                  position: 'relative',
                 }}>
-                  <div style={{ aspectRatio: '4/3', overflow: 'hidden', background: '#e8eef6' }}>
-                    <img
-                      src={img.src}
-                      alt={img.caption}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                    />
+                  <div style={{
+                    aspectRatio: item.aspect || '4/3',
+                    overflow: 'hidden',
+                    background: '#e8eef6',
+                    position: 'relative',
+                  }}>
+                    {item.type === 'video' ? (
+                      <VideoPlayer src={item.src} poster={item.poster} />
+                    ) : (
+                      <img
+                        src={item.src}
+                        alt={item.caption}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    )}
                   </div>
                   <div style={{
                     padding: '12px 16px',
                     borderTop: '1px solid #dce6f0',
                     background: '#ffffff',
                   }}>
-                    <p style={{ fontSize: '0.82rem', color: '#4a5568', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
-                      {img.caption}
+                    <p style={{
+                      fontSize: '0.82rem',
+                      color: '#4a5568',
+                      fontWeight: 600,
+                      fontFamily: 'Inter, sans-serif',
+                    }}>
+                      {item.caption}
                     </p>
                   </div>
                 </div>

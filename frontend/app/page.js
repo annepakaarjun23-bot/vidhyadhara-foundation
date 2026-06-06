@@ -406,7 +406,7 @@ export default function HomePage() {
                       fontSize: '0.9rem'
                     }}
                   >
-                    Register Your Interest
+                    Register Now
                   </Btn>
                 </div>
               </div>
