@@ -48,7 +48,7 @@ const videos = [
     src: '/videos/video2.mp4',
     caption: 'A glimpse into the joy, growth, and memories created during Summer Camp.',
     aspect: '16/9',
-    poster: '/gallery/image25.jpeg',
+    poster: '/gallery/image28.jpeg',
   },
 ]
 
@@ -263,8 +263,8 @@ export default function GalleryPage() {
             <SectionTitle>Videos</SectionTitle>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
-              gap: '24px',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',  // <-- CHANGED: 450px → 280px
+              gap: '16px',
               marginTop: '32px',
             }}>
               {videos.map((video, i) => (
