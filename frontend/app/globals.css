@@ -57,3 +57,7 @@ img {
   .nav-desktop { display: flex !important; }
   .nav-mobile-menu { display: none !important; }
 }
+
+a[download]:hover {
+  background: #133a6e !important;
+}

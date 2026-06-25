@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/gallery', label: 'Gallery' },
   { href: '/student_register', label: 'Student Register' },
   { href: '/volunteer_register', label: 'Volunteer Register' },
+  { href: '/reports', label: 'Reports' },
   { href: '/contact', label: 'Contact' },
 ]
 
