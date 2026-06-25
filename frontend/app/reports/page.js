@@ -11,7 +11,7 @@ const reports = [
   {
     title: '2024 Dasara Camp',
     description: 'Full report on the Dasara Alumni Meet held in 2024, covering event proceedings, attendee details, and key takeaways.',
-    filename: 'Dasara_alumni_meet_2024.pdf',
+    filename: 'dasara_alumni_meet_2024.pdf',
     size: 'PDF',
   },
   {
