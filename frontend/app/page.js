@@ -28,7 +28,7 @@ export default function HomePage() {
               <div style={{ flex: '1 1 420px' }}>
                 <SectionLabel>Non-Profit Educational Foundation</SectionLabel>
                 <h1 style={{
-                  fontSize: 'clamp(1.9rem, 4vw, 2.8rem)',
+                  fontSize: 'clamp(2.4rem, 5vw, 3.6rem)',
                   fontWeight: 800,
                   color: '#0d2a4e',
                   lineHeight: 1.15,
@@ -260,7 +260,7 @@ export default function HomePage() {
                     fontFamily: 'Inter, sans-serif',
                     lineHeight: 1.3,
                   }}>
-                    Summer Camp 2026 — Registration Open
+                    Summer Camp 2026
                   </h3>
                   <p style={{ fontSize: '0.87rem', color: '#4a5568', lineHeight: 1.75, marginBottom: '24px' }}>
                     Free academic sessions for students in Classes 3–12 in Nalgonda district. Expert faculty, structured timetable, and subject-wise coaching at no cost.
@@ -288,19 +288,6 @@ export default function HomePage() {
                     <DownloadIcon />
                     Download Official Notice (PDF)
                   </a>
-        
-                  {/* Smaller Register Button */}
-                  <Btn 
-                    href="/student_register" 
-                    variant="solid" 
-                    style={{ 
-                      width: 'auto', 
-                      padding: '10px 24px',
-                      fontSize: '0.9rem'
-                    }}
-                  >
-                    Register Now — Free
-                  </Btn>
                 </div>
               </div>
         
@@ -361,7 +348,7 @@ export default function HomePage() {
                 </div>
               </div>
         
-              {/* Notice 3: Winter Camp 2026 */}
+              {/* Notice 3: Summer Camp 2027 */}
               <div style={{
                 background: '#ffffff',
                 border: '1px solid #dce6f0',
@@ -392,7 +379,7 @@ export default function HomePage() {
                     marginBottom: '12px', 
                     fontFamily: 'Inter, sans-serif' 
                   }}>
-                    Winter Camp 2026 — Details Coming Soon
+                    Summer Camp 2027 — Coming Soon
                   </h3>
                   <p style={{ fontSize: '0.87rem', color: '#4a5568', lineHeight: 1.75, marginBottom: '24px' }}>
                     Our Winter Camp 2026 is currently being planned. Dates, subjects, and registration details will be published soon.

@@ -274,7 +274,86 @@ export default function ProgramsPage() {
               </div>
             </div>
 
-            {/* 2026 — Upcoming Camps */}
+            {/* 2026 Dasara Camp — Completed */}
+            <div style={{
+              background: '#ffffff',
+              border: '1px solid #dce6f0',
+              borderTop: '3px solid #1a4d8f',
+              borderRadius: '4px',
+              overflow: 'hidden',
+              marginBottom: '24px',
+            }}>
+              {/* Image Gallery - 2 Wide Rectangle Images */}
+              <div style={{ padding: '24px' }}>
+                <div style={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+                  gap: '16px', 
+                }}>
+                  <div style={{ aspectRatio: '16/9', overflow: 'hidden', background: '#e8eef6', borderRadius: '4px' }}>
+                    <img 
+                      src="/programs/dasara_2026_1.jpeg" 
+                      alt="Dasara Camp 2026 - Spell Bee Camp" 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  </div>
+                  <div style={{ aspectRatio: '16/9', overflow: 'hidden', background: '#e8eef6', borderRadius: '4px' }}>
+                    <img 
+                      src="/programs/dasara_2026_2.jpeg" 
+                      alt="Dasara Camp 2026 - Jai Bhim Screening" 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Text Content */}
+              <div style={{ padding: '0 24px 28px' }}>
+                <div style={{ 
+                  fontSize: '0.7rem', 
+                  fontWeight: 700, 
+                  color: '#1a4d8f', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.08em', 
+                  marginBottom: '6px', 
+                  fontFamily: 'Inter, sans-serif' 
+                }}>
+                  2026
+                </div>
+                <h3 style={{ 
+                  fontSize: '1.05rem', 
+                  fontWeight: 700, 
+                  color: '#0d2a4e', 
+                  marginBottom: '16px', 
+                  fontFamily: 'Inter, sans-serif', 
+                  lineHeight: 1.3 
+                }}>
+                  Vidhyadhara Foundation Dasara Camp 2026 — Special Spell Bee Camp
+                </h3>
+                <div style={{ fontSize: '0.9rem', color: '#4a5568', lineHeight: 1.8, fontFamily: 'Inter, sans-serif' }}>
+                  <p style={{ marginBottom: '14px' }}>
+                    <strong style={{ color: '#0d2a4e' }}>The Vidhyadhara Foundation successfully organized the Dasara Special Spell Bee Camp from 12th October 2026 to 20th October 2026</strong> with the objective of making students' Dasara holidays meaningful, productive, and educational.
+                  </p>
+                  <p style={{ marginBottom: '14px' }}>
+                    During the camp, students were introduced to <strong style={{ color: '#0d2a4e' }}>1,000 carefully selected English words</strong> to strengthen their vocabulary, spelling, pronunciation, memory, and communication skills. Through regular practice and learning activities, students improved their spelling accuracy and built confidence.
+                  </p>
+                  <p style={{ marginBottom: '14px' }}>
+                    The camp concluded with a <strong style={{ color: '#0d2a4e' }}>Spell Bee Competition</strong>, where students demonstrated their learning and competed with their peers. Prizes were awarded to the top three performers to appreciate and encourage their efforts.
+                  </p>
+                  <p style={{ marginBottom: '14px' }}>
+                    As part of the camp's social awareness activities, the foundation students watched the movie <strong style={{ color: '#0d2a4e' }}>Jai Bhim on a projector on 19th October 2026</strong>. The screening created awareness about social justice, equality, human rights, dignity, and the importance of education, and inspired students to respect every individual and understand the values enshrined in the Indian Constitution.
+                  </p>
+                  <p style={{ marginBottom: '14px' }}>
+                    <strong style={{ color: '#0d2a4e' }}>Mr. Pole Rambabu, President of the Foundation</strong>, addressed the students and highlighted the importance of education, discipline, equality, and social responsibility. He encouraged students to develop good values, work hard towards their goals, and become responsible citizens. The <strong style={{ color: '#0d2a4e' }}>General Secretary</strong> delivered the vote of thanks, expressing gratitude to the President, guests, volunteers, students, and everyone who contributed to the success of the programme.
+                  </p>
+                  <p style={{ marginBottom: '0px' }}>
+                    Overall, the Dasara Special Spell Bee Camp combined academic development with social awareness and value-based learning, nurturing confident, responsible, and socially conscious learners. The Foundation sincerely appreciates the participation and cooperation of all students, volunteers, and supporters, and remains committed to organizing more educational, motivational, and socially meaningful activities for students and society.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 2027 — Upcoming Camp */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '40px' }}>
               <div style={{
                 background: '#f0f5fc',
@@ -292,7 +371,7 @@ export default function ProgramsPage() {
                   marginBottom: '8px', 
                   fontFamily: 'Inter, sans-serif' 
                 }}>
-                  2026
+                  2027
                 </div>
                 <h3 style={{ 
                   fontSize: '1rem', 
@@ -301,51 +380,14 @@ export default function ProgramsPage() {
                   marginBottom: '8px', 
                   fontFamily: 'Inter, sans-serif' 
                 }}>
-                  Dasara Camp 2026 — Coming Soon
+                  Summer Camp 2027 — Coming Soon
                 </h3>
                 <p style={{ 
                   fontSize: '0.85rem', 
                   color: '#4a5568', 
                   marginBottom: '20px' 
                 }}>
-                  Holiday revision camp during Dasara holidays. Focused sessions for board classes with doubt-clearing workshops. Registration will open shortly.
-                </p>
-                <Btn href="/student_register" variant="solid">Register Interest</Btn>
-              </div>
-
-              <div style={{
-                background: '#f0f5fc',
-                border: '1px dashed #b0c8e8',
-                borderRadius: '4px',
-                padding: '32px',
-                textAlign: 'center',
-              }}>
-                <div style={{ 
-                  fontSize: '0.8rem', 
-                  fontWeight: 700, 
-                  color: '#1a4d8f', 
-                  textTransform: 'uppercase', 
-                  letterSpacing: '0.08em', 
-                  marginBottom: '8px', 
-                  fontFamily: 'Inter, sans-serif' 
-                }}>
-                  2026
-                </div>
-                <h3 style={{ 
-                  fontSize: '1rem', 
-                  fontWeight: 700, 
-                  color: '#0d2a4e', 
-                  marginBottom: '8px', 
-                  fontFamily: 'Inter, sans-serif' 
-                }}>
-                  Winter Camp 2026 — Coming Soon
-                </h3>
-                <p style={{ 
-                  fontSize: '0.85rem', 
-                  color: '#4a5568', 
-                  marginBottom: '20px' 
-                }}>
-                  Exam preparation camp in December–January. Model papers, answer-writing workshops, and personalised feedback for secondary and higher secondary students.
+                  Intensive academic camp in May–June for students in Classes 3–12. Core subjects, expert guidance, and doubt-clearing workshops. Registration will open shortly.
                 </p>
                 <Btn href="/student_register" variant="solid">Register Interest</Btn>
               </div>

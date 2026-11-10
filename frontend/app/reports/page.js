@@ -38,6 +38,12 @@ const reports = [
     filename: 'ou_visit_2026_report.pdf',
     size: 'PDF',
   },
+  {
+    title: '2026 Dasara Camp',
+    description: 'Detailed report on the Dasara Holiday Camp 2026, covering revision sessions, workshops, and student feedback.',
+    filename: 'dasara_report_2026.pdf',
+    size: 'PDF',
+  },
 ]
 
 function DownloadIcon() {
